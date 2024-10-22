@@ -6,24 +6,87 @@
 /*   By: mkoualil <mkoualil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:49:54 by mkoualil          #+#    #+#             */
-/*   Updated: 2024/10/09 13:58:33 by mkoualil         ###   ########.fr       */
+/*   Updated: 2024/10/13 13:41:02 by mkoualil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
+
+#include "PhoneBook.h"
 
 int main(int argc, char const *argv[])
 {
-    std::string first_name;
-    std::string last_name;
-    
-    std::cout << "enter first name ";
-    std::cin >> first_name;
-    
-    std::cout << "enter last name ";
-    std::cin >> first_name;
+	(void) argv;
+	std::string first_name;
+	std::string last_name;
+	std::string nickname;
+	std::string phone_number;
+	std::string darkest_secret;
+	std::string choice_cmd;
+	std::string  nb_choose;
 
-    Contact user(first_name, last_name, last_name, last_name, last_name);
-    user.Show();
-    return 0;
+	Contact c;
+	PhoneBook ph;
+	
+	if (argc != 1)
+		return 1;
+	while(1)
+	{
+		std::cout << "Enter a command (ADD, SEARCH, EXIT) : ";
+		std::cout << "\033[32m" ;
+		std::getline(std::cin, choice_cmd);
+		std::cout << "\033[0m";
+		if (std::cin.eof())
+			break;
+		if (choice_cmd == "ADD" || choice_cmd == "add")
+		{
+
+			get_information_user(&first_name, &last_name, &nickname, &phone_number, &darkest_secret);
+			c.set_contact(first_name, last_name, nickname, 
+							phone_number, darkest_secret);
+			ph.add(c);
+			valide_msg("Contact added successfully");
+		}
+		else if (choice_cmd == "SEARCH" || choice_cmd == "search")
+		{
+			
+			ph.show_PhoneBook();
+			if (ph.get_curretnt_index() != 0)
+			{
+				while (true)
+				{
+					do {
+						std::cout << "\033[34m";
+						std::cout << "Please choose a contact by entering a number between 0 and 7 : ";
+						std::getline(std::cin, nb_choose);
+						std::cout << "\033[0m";
+						if (std::cin.eof())
+							return 1;
+					} while (nb_choose.empty());
+					if ((nb_choose >= "0" && nb_choose <= "7") && nb_choose.length() == 1 && isdigit(nb_choose[0]))
+					{
+						int nb_choose_int = std::stoi(nb_choose);
+						if (ph.search(nb_choose_int) != -1)
+						{
+							ph.show_all_info_contact(nb_choose_int);
+							break;
+						}
+						else
+							error_msg("invalid number choose!");
+					}
+					else if (nb_choose != "")
+						error_msg("out of range 0-7");
+				}
+			}
+				
+		}
+		
+		else if (choice_cmd == "EXIT" || choice_cmd == "exit")
+		{
+			break;
+		}
+		else if (choice_cmd != "")
+			error_msg("wrong command!");
+	}
+
+	return 0;
 }

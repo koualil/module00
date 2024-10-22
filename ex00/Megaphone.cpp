@@ -6,11 +6,16 @@
 /*   By: mkoualil <mkoualil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:40:28 by mkoualil          #+#    #+#             */
-/*   Updated: 2024/10/07 19:26:33 by mkoualil         ###   ########.fr       */
+/*   Updated: 2024/10/13 11:59:04 by mkoualil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
+#include <algorithm>
+#include <cctype> 
+
+// do with string
 
 int main(int argc, char const *argv[])
 {
@@ -21,12 +26,9 @@ int main(int argc, char const *argv[])
 		int count = 1;
 		while (count < argc)
 		{
-			int i = 0;
-			while (argv[count][i] != '\0')
-			{
-				std::cout << (char)toupper(argv[count][i]);
-				i++;
-			}
+			std::string my_string = argv[count];
+            std::transform(my_string.begin(), my_string.end(), my_string.begin(), ::toupper);
+			std::cout << my_string;
 			count++;
 		}
 		std::cout << std::endl;
