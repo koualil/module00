@@ -6,12 +6,13 @@
 /*   By: mkoualil <mkoualil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:49:54 by mkoualil          #+#    #+#             */
-/*   Updated: 2024/10/13 13:41:02 by mkoualil         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:13:52 by mkoualil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "PhoneBook.h"
+#include <cstdlib>  
 
 int main(int argc, char const *argv[])
 {
@@ -64,7 +65,7 @@ int main(int argc, char const *argv[])
 					} while (nb_choose.empty());
 					if ((nb_choose >= "0" && nb_choose <= "7") && nb_choose.length() == 1 && isdigit(nb_choose[0]))
 					{
-						int nb_choose_int = std::stoi(nb_choose);
+						int nb_choose_int = std::atoi(nb_choose.c_str());
 						if (ph.search(nb_choose_int) != -1)
 						{
 							ph.show_all_info_contact(nb_choose_int);

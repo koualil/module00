@@ -6,7 +6,7 @@
 /*   By: mkoualil <mkoualil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 16:11:00 by mkoualil          #+#    #+#             */
-/*   Updated: 2024/10/22 20:26:07 by mkoualil         ###   ########.fr       */
+/*   Updated: 2024/10/22 20:43:03 by mkoualil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
 void Account::_displayTimestamp( void ) {
-    std::time_t t = std::time(nullptr);
+    std::time_t t = std::time(NULL);
     std::tm *now = std::localtime(&t);
     std::cout << "[" << (now->tm_year + 1900)
               << std::setw(2) << std::setfill('0') << (now->tm_mon + 1)

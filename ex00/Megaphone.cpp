@@ -6,7 +6,7 @@
 /*   By: mkoualil <mkoualil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:40:28 by mkoualil          #+#    #+#             */
-/*   Updated: 2024/10/13 11:59:04 by mkoualil         ###   ########.fr       */
+/*   Updated: 2024/11/15 12:23:57 by mkoualil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <algorithm>
 #include <cctype> 
 
-// do with string
 
 int main(int argc, char const *argv[])
 {
