@@ -6,21 +6,24 @@
 /*   By: mkoualil <mkoualil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 19:01:30 by mkoualil          #+#    #+#             */
-/*   Updated: 2024/10/13 12:58:09 by mkoualil         ###   ########.fr       */
+/*   Updated: 2024/11/23 22:19:03 by mkoualil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "PhoneBook.h"
 
-std::string formatColumn(const std::string text)
+int check_number_is_digit(std::string num)
 {
-    std::string formatted = text;
-    if (formatted.length() > 10) {
-        formatted = formatted.substr(0, 9) + '.';
+    unsigned long i = 0;
+    while (i < num.length())
+    {
+        if (std::isdigit(num[i]) != 1)
+            return 0;
+        i++;
     }
+    return 1;
     
-    return std::string(10 - formatted.length(), ' ') + formatted;
 }
 
 std::string trim(const std::string str)
@@ -36,44 +39,29 @@ std::string trim(const std::string str)
     return str.substr(first, (last - first + 1));
 }
 
+void full_user_info(std::string *info, std::string msg)
+{
+    do {
+        std::cout << msg;
+        std::cout << "\033[34m" ;
+        std::getline(std::cin, *info);
+        if (std::cin.eof())
+            std::exit(0);
+
+            
+        std::cout << "\033[0m";
+    } while (trim(*info).empty());
+}
+
 void get_information_user(std::string *first_name, std::string *last_name, 
                                 std::string *nickname, std::string *phone_number,
                                 std::string *darkest_secret)
 {
-    do {
-        std::cout << "Enter first name: ";
-        std::cout << "\033[34m" ;
-        std::getline(std::cin, *first_name);
-        std::cout << "\033[0m";
-    } while (trim(*first_name).empty());
-
-    do {
-        std::cout << "Enter last name: ";
-        std::cout << "\033[34m" ;
-        std::getline(std::cin, *last_name);
-        std::cout << "\033[0m";
-    } while (trim(*last_name).empty());
-
-    do {
-        std::cout << "Enter nickname: ";
-        std::cout << "\033[34m" ;
-        std::getline(std::cin, *nickname);
-        std::cout << "\033[0m";
-    } while (trim(*nickname).empty());
-
-    do {
-        std::cout << "Enter phone number: ";
-        std::cout << "\033[34m" ;
-        std::getline(std::cin, *phone_number);
-        std::cout << "\033[0m";
-    } while (trim(*phone_number).empty());
-
-    do {
-        std::cout << "Enter darkest secret: ";
-        std::cout << "\033[34m" ;
-        std::getline(std::cin, *darkest_secret);
-        std::cout << "\033[0m";
-    } while (trim(*darkest_secret).empty());
+    full_user_info(first_name, "Enter first name: ");
+    full_user_info(last_name, "Enter last name: ");
+    full_user_info(nickname, "Enter nickname: ");
+    full_user_info(phone_number, "Enter phone number: ");
+    full_user_info(darkest_secret, "Enter darkest secret: ");
 }
 
 void	error_msg(std::string s)

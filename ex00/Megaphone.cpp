@@ -6,15 +6,18 @@
 /*   By: mkoualil <mkoualil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:40:28 by mkoualil          #+#    #+#             */
-/*   Updated: 2024/11/15 12:23:57 by mkoualil         ###   ########.fr       */
+/*   Updated: 2024/11/23 21:49:19 by mkoualil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <cctype> 
 
+void iterate_string(std::string str)
+{
+    for (int i=0;i<str.length();i++)
+        std::cout << (char)std::toupper(str[i]);
+}
 
 int main(int argc, char const *argv[])
 {
@@ -26,8 +29,7 @@ int main(int argc, char const *argv[])
 		while (count < argc)
 		{
 			std::string my_string = argv[count];
-            std::transform(my_string.begin(), my_string.end(), my_string.begin(), ::toupper);
-			std::cout << my_string;
+            iterate_string(my_string);
 			count++;
 		}
 		std::cout << std::endl;

@@ -6,7 +6,7 @@
 #    By: mkoualil <mkoualil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/09 19:02:34 by mkoualil          #+#    #+#              #
-#    Updated: 2024/10/10 22:26:26 by mkoualil         ###   ########.fr        #
+#    Updated: 2024/11/16 23:35:44 by mkoualil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRC_FILES = Contact.cpp PhoneBook.cpp input_users.cpp  main.cpp
 OBJ_FILES = $(SRC_FILES:.cpp=.o)
 
 NAME = PhoneBook
-CFLAGS = -Wall -Wextra -Werror -std=c++98 
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 
 all:	$(NAME)

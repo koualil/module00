@@ -6,13 +6,12 @@
 /*   By: mkoualil <mkoualil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:49:54 by mkoualil          #+#    #+#             */
-/*   Updated: 2024/10/23 12:13:52 by mkoualil         ###   ########.fr       */
+/*   Updated: 2024/11/23 22:16:33 by mkoualil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "PhoneBook.h"
-#include <cstdlib>  
 
 int main(int argc, char const *argv[])
 {
@@ -24,7 +23,7 @@ int main(int argc, char const *argv[])
 	std::string darkest_secret;
 	std::string choice_cmd;
 	std::string  nb_choose;
-
+	
 	Contact c;
 	PhoneBook ph;
 	
@@ -35,6 +34,7 @@ int main(int argc, char const *argv[])
 		std::cout << "Enter a command (ADD, SEARCH, EXIT) : ";
 		std::cout << "\033[32m" ;
 		std::getline(std::cin, choice_cmd);
+		choice_cmd = trim(choice_cmd);
 		std::cout << "\033[0m";
 		if (std::cin.eof())
 			break;
@@ -61,9 +61,9 @@ int main(int argc, char const *argv[])
 						std::getline(std::cin, nb_choose);
 						std::cout << "\033[0m";
 						if (std::cin.eof())
-							return 1;
+							return 0;
 					} while (nb_choose.empty());
-					if ((nb_choose >= "0" && nb_choose <= "7") && nb_choose.length() == 1 && isdigit(nb_choose[0]))
+					if (check_number_is_digit(nb_choose))
 					{
 						int nb_choose_int = std::atoi(nb_choose.c_str());
 						if (ph.search(nb_choose_int) != -1)
@@ -85,7 +85,7 @@ int main(int argc, char const *argv[])
 		{
 			break;
 		}
-		else if (choice_cmd != "")
+		else  if (choice_cmd != "")
 			error_msg("wrong command!");
 	}
 

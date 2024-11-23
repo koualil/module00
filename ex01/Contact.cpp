@@ -6,7 +6,7 @@
 /*   By: mkoualil <mkoualil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:40:19 by mkoualil          #+#    #+#             */
-/*   Updated: 2024/10/12 20:23:55 by mkoualil         ###   ########.fr       */
+/*   Updated: 2024/11/20 20:53:46 by mkoualil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ void	Contact::set_contact(std::string first_name, std::string last_name,
        this->darkest_secret = darkest_secret;
 }
 
-Contact Contact::get_contact()
-{
-    return *this;
-}
 
 std::string Contact::formatColumn(const std::string text)
 {
